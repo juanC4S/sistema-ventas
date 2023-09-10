@@ -46,5 +46,11 @@ namespace SisVentas.Presentacion
                 this.Close();
             }
         }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            Frm_Usuarios oFrm_us = new Frm_Usuarios();
+            oFrm_us.ShowDialog();
+        }
     }
 }

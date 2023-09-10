@@ -31,8 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal));
             this.Pnl_opciones = new System.Windows.Forms.Panel();
+            this.btn_cerrarsesion = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btn_empresa = new System.Windows.Forms.Button();
             this.Pnl_titulo = new System.Windows.Forms.Panel();
+            this.lbl_titulo = new System.Windows.Forms.Label();
             this.Pnl_barraestado = new System.Windows.Forms.Panel();
+            this.lblDescripcion_ru = new System.Windows.Forms.Label();
+            this.lbl_nombre_us = new System.Windows.Forms.Label();
             this.Pnl_contenido = new System.Windows.Forms.Panel();
             this.btnReportes = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -43,12 +49,6 @@
             this.btnFamilias = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnEmpresa = new System.Windows.Forms.Button();
-            this.lbl_nombre_us = new System.Windows.Forms.Label();
-            this.lbl_titulo = new System.Windows.Forms.Label();
-            this.lblDescripcion_ru = new System.Windows.Forms.Label();
-            this.btn_empresa = new System.Windows.Forms.Button();
-            this.btnUsuarios = new System.Windows.Forms.Button();
-            this.btn_cerrarsesion = new System.Windows.Forms.Button();
             this.Pnl_opciones.SuspendLayout();
             this.Pnl_titulo.SuspendLayout();
             this.Pnl_barraestado.SuspendLayout();
@@ -68,6 +68,35 @@
             this.Pnl_opciones.Size = new System.Drawing.Size(267, 511);
             this.Pnl_opciones.TabIndex = 0;
             // 
+            // btn_cerrarsesion
+            // 
+            this.btn_cerrarsesion.Location = new System.Drawing.Point(63, 453);
+            this.btn_cerrarsesion.Name = "btn_cerrarsesion";
+            this.btn_cerrarsesion.Size = new System.Drawing.Size(103, 23);
+            this.btn_cerrarsesion.TabIndex = 1;
+            this.btn_cerrarsesion.Text = "Cerrar sesion";
+            this.btn_cerrarsesion.UseVisualStyleBackColor = true;
+            this.btn_cerrarsesion.Click += new System.EventHandler(this.btn_cerrarsesion_Click);
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Location = new System.Drawing.Point(45, 86);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(75, 23);
+            this.btnUsuarios.TabIndex = 1;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
+            // btn_empresa
+            // 
+            this.btn_empresa.Location = new System.Drawing.Point(45, 42);
+            this.btn_empresa.Name = "btn_empresa";
+            this.btn_empresa.Size = new System.Drawing.Size(75, 23);
+            this.btn_empresa.TabIndex = 0;
+            this.btn_empresa.Text = "Empresa";
+            this.btn_empresa.UseVisualStyleBackColor = true;
+            // 
             // Pnl_titulo
             // 
             this.Pnl_titulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(61)))), ((int)(((byte)(155)))));
@@ -78,6 +107,18 @@
             this.Pnl_titulo.Name = "Pnl_titulo";
             this.Pnl_titulo.Size = new System.Drawing.Size(647, 130);
             this.Pnl_titulo.TabIndex = 1;
+            // 
+            // lbl_titulo
+            // 
+            this.lbl_titulo.AutoSize = true;
+            this.lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_titulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_titulo.Location = new System.Drawing.Point(208, 39);
+            this.lbl_titulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_titulo.Name = "lbl_titulo";
+            this.lbl_titulo.Size = new System.Drawing.Size(209, 25);
+            this.lbl_titulo.TabIndex = 1;
+            this.lbl_titulo.Text = "Sistema de Ventas";
             // 
             // Pnl_barraestado
             // 
@@ -90,6 +131,24 @@
             this.Pnl_barraestado.Name = "Pnl_barraestado";
             this.Pnl_barraestado.Size = new System.Drawing.Size(647, 120);
             this.Pnl_barraestado.TabIndex = 2;
+            // 
+            // lblDescripcion_ru
+            // 
+            this.lblDescripcion_ru.AutoSize = true;
+            this.lblDescripcion_ru.Location = new System.Drawing.Point(60, 62);
+            this.lblDescripcion_ru.Name = "lblDescripcion_ru";
+            this.lblDescripcion_ru.Size = new System.Drawing.Size(86, 19);
+            this.lblDescripcion_ru.TabIndex = 9;
+            this.lblDescripcion_ru.Text = "Rol usuario:";
+            // 
+            // lbl_nombre_us
+            // 
+            this.lbl_nombre_us.AutoSize = true;
+            this.lbl_nombre_us.Location = new System.Drawing.Point(60, 27);
+            this.lbl_nombre_us.Name = "lbl_nombre_us";
+            this.lbl_nombre_us.Size = new System.Drawing.Size(63, 19);
+            this.lbl_nombre_us.TabIndex = 8;
+            this.lbl_nombre_us.Text = "Usuario:";
             // 
             // Pnl_contenido
             // 
@@ -241,64 +300,6 @@
             this.btnEmpresa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEmpresa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEmpresa.UseVisualStyleBackColor = true;
-            // 
-            // lbl_nombre_us
-            // 
-            this.lbl_nombre_us.AutoSize = true;
-            this.lbl_nombre_us.Location = new System.Drawing.Point(60, 27);
-            this.lbl_nombre_us.Name = "lbl_nombre_us";
-            this.lbl_nombre_us.Size = new System.Drawing.Size(63, 19);
-            this.lbl_nombre_us.TabIndex = 8;
-            this.lbl_nombre_us.Text = "Usuario:";
-            // 
-            // lbl_titulo
-            // 
-            this.lbl_titulo.AutoSize = true;
-            this.lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_titulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbl_titulo.Location = new System.Drawing.Point(208, 39);
-            this.lbl_titulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_titulo.Name = "lbl_titulo";
-            this.lbl_titulo.Size = new System.Drawing.Size(209, 25);
-            this.lbl_titulo.TabIndex = 1;
-            this.lbl_titulo.Text = "Sistema de Ventas";
-            // 
-            // lblDescripcion_ru
-            // 
-            this.lblDescripcion_ru.AutoSize = true;
-            this.lblDescripcion_ru.Location = new System.Drawing.Point(60, 62);
-            this.lblDescripcion_ru.Name = "lblDescripcion_ru";
-            this.lblDescripcion_ru.Size = new System.Drawing.Size(86, 19);
-            this.lblDescripcion_ru.TabIndex = 9;
-            this.lblDescripcion_ru.Text = "Rol usuario:";
-            // 
-            // btn_empresa
-            // 
-            this.btn_empresa.Location = new System.Drawing.Point(45, 42);
-            this.btn_empresa.Name = "btn_empresa";
-            this.btn_empresa.Size = new System.Drawing.Size(75, 23);
-            this.btn_empresa.TabIndex = 0;
-            this.btn_empresa.Text = "Empresa";
-            this.btn_empresa.UseVisualStyleBackColor = true;
-            // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.Location = new System.Drawing.Point(45, 86);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(75, 23);
-            this.btnUsuarios.TabIndex = 1;
-            this.btnUsuarios.Text = "Usuarios";
-            this.btnUsuarios.UseVisualStyleBackColor = true;
-            // 
-            // btn_cerrarsesion
-            // 
-            this.btn_cerrarsesion.Location = new System.Drawing.Point(63, 453);
-            this.btn_cerrarsesion.Name = "btn_cerrarsesion";
-            this.btn_cerrarsesion.Size = new System.Drawing.Size(103, 23);
-            this.btn_cerrarsesion.TabIndex = 1;
-            this.btn_cerrarsesion.Text = "Cerrar sesion";
-            this.btn_cerrarsesion.UseVisualStyleBackColor = true;
-            this.btn_cerrarsesion.Click += new System.EventHandler(this.btn_cerrarsesion_Click);
             // 
             // Frm_Principal
             // 

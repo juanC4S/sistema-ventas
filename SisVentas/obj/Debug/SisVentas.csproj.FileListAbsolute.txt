@@ -16,3 +16,4 @@ C:\Users\jccsc\Desktop\sistemas-csharp\Sol_SisVentas\SisVentas\bin\Debug\MySql.D
 C:\Users\jccsc\Desktop\sistemas-csharp\Sol_SisVentas\SisVentas\obj\Debug\SisVentas.Presentacion.Frm_Principal.resources
 C:\Users\jccsc\Desktop\sistemas-csharp\Sol_SisVentas\SisVentas\obj\Debug\SisVentas.csproj.CopyComplete
 C:\Users\jccsc\Desktop\sistemas-csharp\Sol_SisVentas\SisVentas\obj\Debug\SisVentas.Presentacion.Frm_Login.resources
+C:\Users\jccsc\Desktop\sistemas-csharp\Sol_SisVentas\SisVentas\obj\Debug\SisVentas.Presentacion.Frm_Usuarios.resources

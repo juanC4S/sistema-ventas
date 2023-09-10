@@ -38,5 +38,31 @@ namespace SisVentas.Datos
                 if(Sqlcon.State==ConnectionState.Open) Sqlcon.Close();
             }
         }
+        public DataTable Listado_us(string cTexto)
+        {
+            MySqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            MySqlConnection Sqlcon = new MySqlConnection();
+            try
+            {
+                Sqlcon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand("usp_listado_us", Sqlcon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("cTexto", MySqlDbType.VarChar).Value = cTexto;
+                Sqlcon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                if (Sqlcon.State == ConnectionState.Open) Sqlcon.Close();
+            }
+        }
     }
 }
