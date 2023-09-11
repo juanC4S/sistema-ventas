@@ -68,6 +68,20 @@ namespace SisVentas.Presentacion
             dgvListado.DataSource = Datos.Listado_us(cTexto);
             this.Formato();
         }
+        private void Listado_ru()
+        {
+            try
+            {
+                D_Usuarios Datos = new D_Usuarios();
+                cmbRolUsuario.DataSource = Datos.Listado_ru();
+                cmbRolUsuario.ValueMember = "codigo_ru";
+                cmbRolUsuario.DisplayMember = "descripcion_ru";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message +ex.StackTrace);
+            }
+        }
         #endregion
         private void Estado_botonesProcesos(bool lEstado)
         {
@@ -115,7 +129,13 @@ namespace SisVentas.Presentacion
 
         private void Frm_Usuarios_Load(object sender, EventArgs e)
         {
+            this.Listado_ru();
             this.Listado_us("%");
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.Listado_us(txtBuscar.Text);
         }
     }
 }
