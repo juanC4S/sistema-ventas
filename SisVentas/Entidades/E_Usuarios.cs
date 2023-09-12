@@ -10,7 +10,7 @@ namespace SisVentas.Entidades
     {
         public int Codigo_us {  get; set; }
         public string Login_us {  get; set; }
-        public string Password {  get; set; }
+        public string Password_us {  get; set; }
         public string Nombre_us {  get; set; }
         public int Codigo_ru {  get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using SisVentas.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -89,6 +90,42 @@ namespace SisVentas.Datos
             {
                 if (Sqlcon.State == ConnectionState.Open) Sqlcon.Close();
             }
+        }
+        public string Guardar_us(int nOpcion, E_Usuarios oPro)
+        {
+            string Rpta = "";
+            MySqlConnection Sqlcon = new MySqlConnection();
+            try
+            {
+                Sqlcon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand("usp_guardar_us", Sqlcon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("nOpcion", MySqlDbType.Int32).Value = nOpcion;
+                Comando.Parameters.Add("nCodigo_us", MySqlDbType.Int32).Value = oPro.Codigo_us;
+                Comando.Parameters.Add("cLogin_us", MySqlDbType.VarChar).Value = oPro.Login_us;
+                Comando.Parameters.Add("cPassword_us", MySqlDbType.VarChar).Value = oPro.Password_us;
+                Comando.Parameters.Add("cNombre_us", MySqlDbType.VarChar).Value = oPro.Nombre_us;
+                Comando.Parameters.Add("nCodigo_ru", MySqlDbType.Int32).Value = oPro.Codigo_ru;
+
+                MySqlParameter ParCodigo = new MySqlParameter();
+                ParCodigo.ParameterName = "nCodigo_ou";
+                ParCodigo.MySqlDbType = MySqlDbType.Int32;
+                ParCodigo.Direction = ParameterDirection.Output;
+                Comando.Parameters.Add(ParCodigo);
+                Sqlcon.Open();
+                Comando.ExecuteNonQuery();
+                Rpta = Convert.ToString(ParCodigo.Value);
+
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if(Sqlcon.State==ConnectionState.Open) Sqlcon.Close();
+            }
+            return Rpta;
         }
     }
 }

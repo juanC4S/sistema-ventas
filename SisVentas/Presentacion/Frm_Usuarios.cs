@@ -1,4 +1,5 @@
 ﻿using SisVentas.Datos;
+using SisVentas.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -136,6 +137,49 @@ namespace SisVentas.Presentacion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.Listado_us(txtBuscar.Text);
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (txtLogin_us.Text == string.Empty || 
+                txtPassword_us.Text == string.Empty ||
+                txtNombre_us.Text == string.Empty ||
+                cmbRolUsuario.Text == string.Empty)
+            {
+                MessageBox.Show("Ingrese dato requerido (*)",
+                                "Aviso del Sistema",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
+            else  //Procedemos a guardar la información
+            {
+                string Rpta;
+                E_Usuarios oPro = new E_Usuarios();
+                oPro.Codigo_us = nCodigo_us;
+                oPro.Login_us = txtLogin_us.Text;
+                oPro.Password_us = txtPassword_us.Text;
+                oPro.Nombre_us = txtNombre_us.Text;
+                oPro.Codigo_ru = Convert.ToInt32(cmbRolUsuario.SelectedValue);
+                D_Usuarios Datos = new D_Usuarios();
+                Rpta = Datos.Guardar_us(nEstadoGuarda, oPro);
+                bool esNumero = int.TryParse(Rpta, out int xCodigo);
+                if(esNumero == true)
+                {
+                    nEstadoGuarda = 0;
+                    nCodigo_us = 0;
+                    this.Limpia_texto();
+                    this.Estado_texto(false);
+                    this.Estado_botonesProcesos(false);
+                    this.Estado_BotonesPrincipales(true);
+                    this.Listado_us("%");
+                    MessageBox.Show("Los datos han sido guardados correctamente con el código #"+ Rpta.Trim(),
+                                    "Aviso del sistema",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                }
+
+            }
+            
         }
     }
 }
