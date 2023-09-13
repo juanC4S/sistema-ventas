@@ -37,6 +37,9 @@ namespace SisVentas.Presentacion
             txtPassword_us.Enabled = lEstado;
             txtNombre_us.Enabled = lEstado;
             cmbRolUsuario.Enabled = lEstado;
+            txtBuscar.Enabled=!lEstado;
+            dgvListado.Enabled =! lEstado;
+            btnBuscar.Enabled = !lEstado;
         }
 
         private void Estado_BotonesPrincipales(bool lEstado)
@@ -83,6 +86,24 @@ namespace SisVentas.Presentacion
                 MessageBox.Show(ex.Message +ex.StackTrace);
             }
         }
+        private void selecciona_item()
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(dgvListado.CurrentRow.Cells["codigo_us"].Value)))
+            {
+                MessageBox.Show("Selecione un registro válido",
+                                "Aviso del sistema",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                nCodigo_us = Convert.ToInt32(dgvListado.CurrentRow.Cells["codigo_us"].Value);
+                txtLogin_us.Text = dgvListado.CurrentRow.Cells["login_us"].Value.ToString();
+                txtPassword_us.Text = "";
+                txtNombre_us.Text = dgvListado.CurrentRow.Cells["nombre_us"].Value.ToString();
+                cmbRolUsuario.Text = dgvListado.CurrentRow.Cells["descripcion_ru"].Value.ToString();
+            }
+        }
         #endregion
         private void Estado_botonesProcesos(bool lEstado)
         {
@@ -96,7 +117,27 @@ namespace SisVentas.Presentacion
 
         private void btnEstado_Click(object sender, EventArgs e)
         {
-
+            if (dgvListado.Rows.Count > 0)
+            {
+                string Rpta = "";
+                D_Usuarios Datos = new D_Usuarios();
+                Rpta = Datos.Activo_us(Convert.ToInt32(dgvListado.CurrentRow.Cells["codigo_us"].Value));
+                if (Rpta.Equals("OK"))
+                {
+                    this.Listado_us("%");
+                    MessageBox.Show("Proceso de estado actualizado",
+                                    "Aviso del Sistema",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show(Rpta,
+                                    "Aviso del Sistema",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -111,7 +152,13 @@ namespace SisVentas.Presentacion
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-
+            nEstadoGuarda = 2; //Actualizar Registro
+    
+            this.Estado_texto(true);
+            txtLogin_us.Enabled = false;
+            this.Estado_botonesProcesos(true);
+            this.Estado_BotonesPrincipales(false);
+            this.txtNombre_us.Focus();
         }
 
         private void pnlTrabajo_Paint(object sender, PaintEventArgs e)
@@ -180,6 +227,11 @@ namespace SisVentas.Presentacion
 
             }
             
+        }
+
+        private void dgvListado_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            this.selecciona_item();
         }
     }
 }

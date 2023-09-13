@@ -236,6 +236,7 @@
             this.dgvListado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvListado.Size = new System.Drawing.Size(641, 127);
             this.dgvListado.TabIndex = 16;
+            this.dgvListado.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListado_CellEnter);
             // 
             // txtBuscar
             // 

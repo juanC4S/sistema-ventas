@@ -127,5 +127,28 @@ namespace SisVentas.Datos
             }
             return Rpta;
         }
+        public string Activo_us(int nCodigo_us)
+        {
+            string Rpta = "";
+            MySqlConnection Sqlcon = new MySqlConnection();
+            try
+            {
+                Sqlcon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand("usp_activo_us", Sqlcon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("nCodigo_us", MySqlDbType.Int32).Value = nCodigo_us;
+                Sqlcon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se realizo el proceso";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (Sqlcon.State == ConnectionState.Open) Sqlcon.Close();
+            }
+            return Rpta;
+        }
     }
 }
